@@ -11,7 +11,7 @@ def main():
     app = connexion.App(__name__, specification_dir='./swagger/')
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('swagger.yaml',
-                arguments={'title': 'goalsVendor-api'},
+                arguments={'title': 'goals-api'},
                 pythonic_params=True,
                 resolver=MethodViewResolver("swagger_server.controllers")
     )
