@@ -1,0 +1,379 @@
+openapi: 3.0.3
+info:
+  title: goalsVendor-api
+  description: goalsVendor microservice
+  version: 1.0.0
+servers:
+- url: /rest/goalsVendor-api/v1.0/
+paths:
+  /goalsVendor/getall:
+    post:
+      tags:
+      - All goalsVendor
+      summary: Obtener todos los goalsVendor.
+      description: Obtener todos los goalsVendor.
+      operationId: get_all_goals_vendor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestGetAllGoalsVendor'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGetAllGoalsVendor'
+        "400":
+          description: Bad Request
+      x-openapi-router-controller: swagger_server.controllers.all_goals_vendor_controller.AllGoalsView
+  /goalsVendor/getsingle:
+    post:
+      tags:
+      - Get Single goalsVendor
+      summary: Obtener un goalsVendor específico.
+      description: Obtener un goalsVendor específico por su ID.
+      operationId: get_single_goals_vendor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestGetSingleGoalsVendor'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGetSingleGoalsVendor'
+        "400":
+          description: Bad Request
+      x-openapi-router-controller: swagger_server.controllers.get_single_goals_vendor_controller.GetGoalsView
+  /goalsVendor/new:
+    post:
+      tags:
+      - New goalsVendor
+      summary: Crear un nuevo goalsVendor.
+      description: Crear un nuevo goalsVendor.
+      operationId: new_goals_vendor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestNewGoalsVendor'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseNewGoalsVendor'
+        "400":
+          description: Bad Request
+      x-openapi-router-controller: swagger_server.controllers.new_goals_vendor_controller.NewGoalsView
+  /goalsVendor/{id_goal}:
+    put:
+      tags:
+      - Update goalsVendor
+      summary: Actualizar goalsVendor.
+      description: Actualizar goalsVendor.
+      operationId: edit_goals_vendor
+      parameters:
+      - name: id_goal
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          title: Id goalsVendor
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEditGoalsVendor'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEditGoalsVendor'
+        "400":
+          description: Bad Request
+      x-openapi-router-controller: swagger_server.controllers.update_goals_vendor_controller.UpdateGoalsView
+  /goalsVendor/delete/{id_goal}:
+    delete:
+      tags:
+      - Delete goalsVendor
+      summary: Eliminar goalsVendor.
+      description: Eliminar un goalsVendor existente.
+      operationId: delete_goals_vendor
+      parameters:
+      - name: id_goal
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          title: Id goalsVendor
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDeleteGoalsVendor'
+        "400":
+          description: Bad Request
+      x-openapi-router-controller: swagger_server.controllers.delete_goals_vendor_controller.DeleteGoalsView
+components:
+  schemas:
+    RequestGetAllGoalsVendor:
+      properties:
+        channel:
+          type: string
+          example: CHANNEL
+        externalTransactionId:
+          type: string
+          example: fcea920f7412b5da7be0cf42b8c93759
+        id_user:
+          type: integer
+          example: 1
+        goal_date:
+          type: string
+          example: 2023-08
+    RequestGetSingleGoalsVendor:
+      properties:
+        channel:
+          type: string
+          example: CHANNEL
+        externalTransactionId:
+          type: string
+          example: fcea920f7412b5da7be0cf42b8c93759
+        id_user:
+          type: integer
+          example: 1
+        id_goal:
+          type: integer
+          example: 1
+    RequestNewGoalsVendor:
+      properties:
+        channel:
+          type: string
+          example: CHANNEL
+        externalTransactionId:
+          type: string
+          example: fcea920f7412b5da7be0cf42b8c93759
+        data:
+          $ref: '#/components/schemas/GoalsVendorData'
+    RequestEditGoalsVendor:
+      properties:
+        channel:
+          type: string
+          example: CHANNEL
+        externalTransactionId:
+          type: string
+          example: fcea920f7412b5da7be0cf42b8c93759
+        data:
+          $ref: '#/components/schemas/GoalsVendorData'
+    GoalsVendorData:
+      type: object
+      properties:
+        id_goal:
+          type: integer
+          example: 1
+        id_user:
+          type: integer
+          example: 1
+        internet_dolar:
+          type: number
+          example: 50
+        internet_volumen:
+          type: integer
+          example: 1000
+        telefonia_dolar:
+          type: number
+          example: 30
+        telefonia_volumen:
+          type: integer
+          example: 500
+        television_dolar:
+          type: number
+          example: 20
+        television_volumen:
+          type: integer
+          example: 200
+        goal_date:
+          type: string
+          example: 2023-08
+        created_at:
+          type: string
+          format: date-time
+          example: 2023-08-19T12:00:00Z
+      example:
+        internet_dolar: 50
+        telefonia_dolar: 30
+        goal_date: 2023-08
+        id_goal: 1
+        television_dolar: 20
+        television_volumen: 200
+        created_at: 2023-08-19T12:00:00Z
+        id_user: 1
+        internet_volumen: 1000
+        telefonia_volumen: 500
+    ResponseGetAllGoalsVendor:
+      properties:
+        channel:
+          type: string
+          example: web
+        externalTransactionId:
+          type: string
+          example: fcea920f7412b5da7be0cf42b8c93759
+        internalTransactionId:
+          type: string
+          example: "12345"
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalsVendorData'
+      example:
+        data:
+        - internet_dolar: 50
+          telefonia_dolar: 30
+          goal_date: 2023-08
+          id_goal: 1
+          television_dolar: 20
+          television_volumen: 200
+          created_at: 2023-08-19T12:00:00Z
+          id_user: 1
+          internet_volumen: 1000
+          telefonia_volumen: 500
+        - internet_dolar: 50
+          telefonia_dolar: 30
+          goal_date: 2023-08
+          id_goal: 1
+          television_dolar: 20
+          television_volumen: 200
+          created_at: 2023-08-19T12:00:00Z
+          id_user: 1
+          internet_volumen: 1000
+          telefonia_volumen: 500
+        channel: web
+        internalTransactionId: "12345"
+        externalTransactionId: fcea920f7412b5da7be0cf42b8c93759
+    ResponseGetSingleGoalsVendor:
+      properties:
+        channel:
+          type: string
+          example: web
+        externalTransactionId:
+          type: string
+          example: fcea920f7412b5da7be0cf42b8c93759
+        internalTransactionId:
+          type: string
+          example: "12345"
+        data:
+          $ref: '#/components/schemas/GoalsVendorData'
+      example:
+        data:
+          internet_dolar: 50
+          telefonia_dolar: 30
+          goal_date: 2023-08
+          id_goal: 1
+          television_dolar: 20
+          television_volumen: 200
+          created_at: 2023-08-19T12:00:00Z
+          id_user: 1
+          internet_volumen: 1000
+          telefonia_volumen: 500
+        channel: web
+        internalTransactionId: "12345"
+        externalTransactionId: fcea920f7412b5da7be0cf42b8c93759
+    ResponseNewGoalsVendor:
+      properties:
+        channel:
+          type: string
+          example: web
+        externalTransactionId:
+          type: string
+          example: fcea920f7412b5da7be0cf42b8c93759
+        internalTransactionId:
+          type: string
+          example: "12345"
+        data:
+          $ref: '#/components/schemas/GoalsVendorData'
+      example:
+        data:
+          internet_dolar: 50
+          telefonia_dolar: 30
+          goal_date: 2023-08
+          id_goal: 1
+          television_dolar: 20
+          television_volumen: 200
+          created_at: 2023-08-19T12:00:00Z
+          id_user: 1
+          internet_volumen: 1000
+          telefonia_volumen: 500
+        channel: web
+        internalTransactionId: "12345"
+        externalTransactionId: fcea920f7412b5da7be0cf42b8c93759
+    ResponseEditGoalsVendor:
+      properties:
+        channel:
+          type: string
+          example: web
+        externalTransactionId:
+          type: string
+          example: fcea920f7412b5da7be0cf42b8c93759
+        internalTransactionId:
+          type: string
+          example: "12345"
+        data:
+          $ref: '#/components/schemas/GoalsVendorData'
+      example:
+        data:
+          internet_dolar: 50
+          telefonia_dolar: 30
+          goal_date: 2023-08
+          id_goal: 1
+          television_dolar: 20
+          television_volumen: 200
+          created_at: 2023-08-19T12:00:00Z
+          id_user: 1
+          internet_volumen: 1000
+          telefonia_volumen: 500
+        channel: web
+        internalTransactionId: "12345"
+        externalTransactionId: fcea920f7412b5da7be0cf42b8c93759
+    ResponseDeleteGoalsVendor:
+      properties:
+        channel:
+          type: string
+          example: web
+        externalTransactionId:
+          type: string
+          example: fcea920f7412b5da7be0cf42b8c93759
+        internalTransactionId:
+          type: string
+          example: "12345"
+        data:
+          $ref: '#/components/schemas/GoalsVendorData'
+      example:
+        data:
+          internet_dolar: 50
+          telefonia_dolar: 30
+          goal_date: 2023-08
+          id_goal: 1
+          television_dolar: 20
+          television_volumen: 200
+          created_at: 2023-08-19T12:00:00Z
+          id_user: 1
+          internet_volumen: 1000
+          telefonia_volumen: 500
+        channel: web
+        internalTransactionId: "12345"
+        externalTransactionId: fcea920f7412b5da7be0cf42b8c93759
+

@@ -1,0 +1,15 @@
+# coding: utf-8
+
+# flake8: noqa
+from __future__ import absolute_import
+# import models into model package
+from swagger_server.models.goals_vendor_data import GoalsVendorData
+from swagger_server.models.request_edit_goals_vendor import RequestEditGoalsVendor
+from swagger_server.models.request_get_all_goals_vendor import RequestGetAllGoalsVendor
+from swagger_server.models.request_get_single_goals_vendor import RequestGetSingleGoalsVendor
+from swagger_server.models.request_new_goals_vendor import RequestNewGoalsVendor
+from swagger_server.models.response_delete_goals_vendor import ResponseDeleteGoalsVendor
+from swagger_server.models.response_edit_goals_vendor import ResponseEditGoalsVendor
+from swagger_server.models.response_get_all_goals_vendor import ResponseGetAllGoalsVendor
+from swagger_server.models.response_get_single_goals_vendor import ResponseGetSingleGoalsVendor
+from swagger_server.models.response_new_goals_vendor import ResponseNewGoalsVendor

@@ -1,0 +1,11 @@
+{
+    "MODE": "PROD",
+    "SALT": "$2b$12$DmpeAC/LMmc8UVA2ty5Uou",
+    "SQLALCHEMY_DATABASE_URI": "mysql+pymysql://dba:c2VjcmV0Cg==@3.136.234.203:3306/xtrim",
+    "SQLALCHEMY_ENGINE_OPTIONS": {
+        "echo": false,
+        "pool_recycle": 300,
+        "pool_pre_ping": true
+    },
+    "SERVICES": {}
+}
