@@ -4,7 +4,7 @@ info:
   description: goalsVendor microservice
   version: 1.0.0
 servers:
-- url: /rest/goals-api/v1.0/
+- url: /rest/cw-goals-api/v1.0/
 paths:
   /goalsVendor/getall:
     post:
